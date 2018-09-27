@@ -15,7 +15,7 @@ interface CompanyRepositoryInterface extends BaseCompanyRepository
      *
      * @param string $externalReference
      *
-     * @return \Generated\Shared\Transfer\CompanyTransfer
+     * @return \Generated\Shared\Transfer\CompanyTransfer|null
      */
-    public function getCompanyByExternalReference(string $externalReference): CompanyTransfer;
+    public function findCompanyByExternalReference(string $externalReference): ?CompanyTransfer;
 }

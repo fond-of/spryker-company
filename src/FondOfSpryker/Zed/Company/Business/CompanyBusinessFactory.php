@@ -3,6 +3,8 @@
 namespace FondOfSpryker\Zed\Company\Business;
 
 use FondOfSpryker\Zed\Company\Business\Model\Company;
+use FondOfSpryker\Zed\Company\Business\Model\CompanyReader;
+use FondOfSpryker\Zed\Company\Business\Model\CompanyReaderInterface;
 use Spryker\Zed\Company\Business\CompanyBusinessFactory as BaseCompanyBusinessFactory;
 use Spryker\Zed\Company\Business\Model\CompanyInterface;
 
@@ -23,6 +25,16 @@ class CompanyBusinessFactory extends BaseCompanyBusinessFactory
             $this->getEntityManager(),
             $this->createPluginExecutor(),
             $this->createStoreRelationWriter()
+        );
+    }
+
+    /**
+     * @return \FondOfSpryker\Zed\Company\Business\Model\CompanyReaderInterface
+     */
+    public function createCompanyReader(): CompanyReaderInterface
+    {
+        return new CompanyReader(
+            $this->getRepository()
         );
     }
 }

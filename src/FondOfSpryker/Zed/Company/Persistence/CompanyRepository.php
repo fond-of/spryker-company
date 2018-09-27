@@ -19,12 +19,16 @@ class CompanyRepository extends BaseCompanyRepository implements CompanyReposito
      *
      * @return \Generated\Shared\Transfer\CompanyTransfer
      */
-    public function getCompanyByExternalReference(string $externalReference): CompanyTransfer
+    public function findCompanyByExternalReference(string $externalReference): ?CompanyTransfer
     {
         $spyCompany = $this->getFactory()
             ->createCompanyQuery()
             ->filterByExternalReference($externalReference)
             ->findOne();
+
+        if ($spyCompany === null) {
+            return null;
+        }
 
         return $this->getFactory()
             ->createCompanyMapper()

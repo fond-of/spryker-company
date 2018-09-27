@@ -2,7 +2,7 @@
 
 namespace FondOfSpryker\Zed\Company\Business;
 
-use Generated\Shared\Transfer\CompanyTransfer;
+use Generated\Shared\Transfer\CompanyResponseTransfer;
 use Spryker\Zed\Company\Business\CompanyFacade as BaseCompanyFacade;
 
 /**
@@ -19,12 +19,12 @@ class CompanyFacade extends BaseCompanyFacade implements CompanyFacadeInterface
      *
      * @param string $externalReference
      *
-     * @return \Generated\Shared\Transfer\CompanyTransfer|null
+     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
-    public function findByExternalReference(string $externalReference): CompanyTransfer
+    public function findCompanyByExternalReference(string $externalReference): CompanyResponseTransfer
     {
         return $this->getFactory()
-            ->createCompany()
-            ->findByExternalReference($externalReference);
+            ->createCompanyReader()
+            ->findCompanyByExternalReference($externalReference);
     }
 }

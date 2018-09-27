@@ -16,13 +16,13 @@ interface CompanyClientInterface extends BaseCompanyClientInterface
      *
      * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
      *
-     * @return \Generated\Shared\Transfer\CompanyTransfer
+     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
-    public function findCompanyByExternalReference(CompanyTransfer $companyTransfer): CompanyTransfer;
+    public function findCompanyByExternalReference(CompanyTransfer $companyTransfer): CompanyResponseTransfer;
 
     /**
      * Specification:
-     * - Updates an existing company.
+     * - Updates existing company.
      *
      * @api
      *
@@ -31,16 +31,4 @@ interface CompanyClientInterface extends BaseCompanyClientInterface
      * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
     public function updateCompany(CompanyTransfer $companyTransfer): CompanyResponseTransfer;
-
-    /**
-     * Specification:
-     * - Deletes an existing company.
-     *
-     * @api
-     *
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return void
-     */
-    public function deleteCompany(CompanyTransfer $companyTransfer): void;
 }

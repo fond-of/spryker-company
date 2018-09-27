@@ -2,7 +2,7 @@
 
 namespace FondOfSpryker\Zed\Company\Business;
 
-use Generated\Shared\Transfer\CompanyTransfer;
+use Generated\Shared\Transfer\CompanyResponseTransfer;
 use Spryker\Zed\Company\Business\CompanyFacadeInterface as BaseCompanyFacadeInterface;
 
 interface CompanyFacadeInterface extends BaseCompanyFacadeInterface
@@ -13,13 +13,9 @@ interface CompanyFacadeInterface extends BaseCompanyFacadeInterface
      *
      * @api
      *
-     * Specification:
-     *  - Finds company by external reference
-     *  - Returns company transfer
-     *
      * @param string $externalReference
      *
-     * @return \Generated\Shared\Transfer\CompanyTransfer|null
+     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
-    public function findByExternalReference(string $externalReference): CompanyTransfer;
+    public function findCompanyByExternalReference(string $externalReference): CompanyResponseTransfer;
 }

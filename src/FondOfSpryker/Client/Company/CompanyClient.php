@@ -18,9 +18,9 @@ class CompanyClient extends BaseCompanyClient implements CompanyClientInterface
      *
      * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
      *
-     * @return \Generated\Shared\Transfer\CompanyTransfer
+     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
-    public function findCompanyByExternalReference(CompanyTransfer $companyTransfer): CompanyTransfer
+    public function findCompanyByExternalReference(CompanyTransfer $companyTransfer): CompanyResponseTransfer
     {
         return $this->getFactory()->createZedCompanyStub()->findCompanyByExternalReference($companyTransfer);
     }
@@ -37,19 +37,5 @@ class CompanyClient extends BaseCompanyClient implements CompanyClientInterface
     public function updateCompany(CompanyTransfer $companyTransfer): CompanyResponseTransfer
     {
         return $this->getFactory()->createZedCompanyStub()->updateCompany($companyTransfer);
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @api
-     *
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return void
-     */
-    public function deleteCompany(CompanyTransfer $companyTransfer): void
-    {
-        $this->getFactory()->createZedCompanyStub()->deleteCompany($companyTransfer);
     }
 }

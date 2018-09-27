@@ -13,10 +13,13 @@ class CompanyStub extends BaseCompanyStub implements CompanyStubInterface
      *
      * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
-    public function updateCompany(CompanyTransfer $companyTransfer): CompanyResponseTransfer
+    public function findCompanyByExternalReference(CompanyTransfer $companyTransfer): CompanyResponseTransfer
     {
         /** @var \Generated\Shared\Transfer\CompanyResponseTransfer $companyResponseTransfer */
-        $companyResponseTransfer = $this->zedRequestClient->call('/company/gateway/update', $companyTransfer);
+        $companyResponseTransfer = $this->zedRequestClient->call(
+            '/company/gateway/find-company-by-external-reference',
+            $companyTransfer
+        );
 
         return $companyResponseTransfer;
     }
@@ -24,24 +27,13 @@ class CompanyStub extends BaseCompanyStub implements CompanyStubInterface
     /**
      * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
      *
-     * @return void
+     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
-    public function deleteCompany(CompanyTransfer $companyTransfer): void
+    public function updateCompany(CompanyTransfer $companyTransfer): CompanyResponseTransfer
     {
-        /** @var \Spryker\Client\ZedRequest\Client\Response $response */
-        $response = $this->zedRequestClient->call('/company/gateway/delete', $companyTransfer);
-    }
+        /** @var \Generated\Shared\Transfer\CompanyResponseTransfer $companyResponseTransfer */
+        $companyResponseTransfer = $this->zedRequestClient->call('/company/gateway/update', $companyTransfer);
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyTransfer
-     */
-    public function findCompanyByExternalReference(CompanyTransfer $companyTransfer): CompanyTransfer
-    {
-        /** @var \Generated\Shared\Transfer\CompanyTransfer $companyTransfer */
-        $companyTransfer = $this->zedRequestClient->call('/company/gateway/find-company-by-external-reference', $companyTransfer);
-
-        return $companyTransfer;
+        return $companyResponseTransfer;
     }
 }

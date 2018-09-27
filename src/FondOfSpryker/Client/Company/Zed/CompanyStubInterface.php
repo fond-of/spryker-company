@@ -13,19 +13,12 @@ interface CompanyStubInterface extends BaseCompanyStubInterface
      *
      * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
+    public function findCompanyByExternalReference(CompanyTransfer $companyTransfer): CompanyResponseTransfer;
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
+     */
     public function updateCompany(CompanyTransfer $companyTransfer): CompanyResponseTransfer;
-
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return void
-     */
-    public function deleteCompany(CompanyTransfer $companyTransfer): void;
-
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyTransfer
-     */
-    public function findCompanyByExternalReference(CompanyTransfer $companyTransfer): CompanyTransfer;
 }

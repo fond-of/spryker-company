@@ -14,21 +14,11 @@ class GatewayController extends BaseGatewayController
     /**
      * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
      *
-     * @return \Generated\Shared\Transfer\CompanyTransfer
+     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
-    public function findCompanyByExternalReferenceAction(CompanyTransfer $companyTransfer): CompanyTransfer
+    public function findCompanyByExternalReferenceAction(CompanyTransfer $companyTransfer): CompanyResponseTransfer
     {
-        return $this->getFacade()->findByExternalReference($companyTransfer->getExternalReference());
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return void
-     */
-    public function deleteAction(CompanyTransfer $companyTransfer): void
-    {
-        $this->getFacade()->delete($companyTransfer);
+        return $this->getFacade()->findCompanyByExternalReference($companyTransfer->getExternalReference());
     }
 
     /**

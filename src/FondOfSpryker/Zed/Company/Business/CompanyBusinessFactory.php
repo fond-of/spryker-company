@@ -2,39 +2,42 @@
 
 namespace FondOfSpryker\Zed\Company\Business;
 
-use FondOfSpryker\Zed\Company\Business\Model\Company;
-use FondOfSpryker\Zed\Company\Business\Model\CompanyReader;
-use FondOfSpryker\Zed\Company\Business\Model\CompanyReaderInterface;
-use Spryker\Zed\Company\Business\CompanyBusinessFactory as BaseCompanyBusinessFactory;
-use Spryker\Zed\Company\Business\Model\CompanyInterface;
+use FondOfSpryker\Zed\Company\Business\Model\CompanyPluginExecutor;
+use FondOfSpryker\Zed\Company\Business\Reader\CompanyReader;
+use Spryker\Zed\Company\Business\CompanyBusinessFactory as SprykerCompanyBusinessFactory;
+use Spryker\Zed\Company\Business\Model\CompanyPluginExecutorInterface;
+use Spryker\Zed\Company\Business\Reader\CompanyReaderInterface;
 
 /**
  * @method \FondOfSpryker\Zed\Company\Persistence\CompanyRepositoryInterface getRepository()
  * @method \Spryker\Zed\Company\Persistence\CompanyEntityManagerInterface getEntityManager()
  * @method \Spryker\Zed\Company\CompanyConfig getConfig()
  */
-class CompanyBusinessFactory extends BaseCompanyBusinessFactory
+class CompanyBusinessFactory extends SprykerCompanyBusinessFactory
 {
     /**
-     * @return \Spryker\Zed\Company\Business\Model\CompanyInterface
+     * @return \Spryker\Zed\Company\Business\Reader\CompanyReaderInterface
      */
-    public function createCompany(): CompanyInterface
+    public function createCompanyReader(): CompanyReaderInterface
     {
-        return new Company(
+        /** @var \FondOfSpryker\Zed\Company\Business\Model\CompanyPluginExecutorInterface $pluginExecutor */
+        $pluginExecutor = $this->createPluginExecutor();
+
+        return new CompanyReader(
             $this->getRepository(),
-            $this->getEntityManager(),
-            $this->createPluginExecutor(),
-            $this->createStoreRelationWriter()
+            $pluginExecutor
         );
     }
 
     /**
-     * @return \FondOfSpryker\Zed\Company\Business\Model\CompanyReaderInterface
+     * @return \Spryker\Zed\Company\Business\Model\CompanyPluginExecutorInterface
      */
-    public function createCompanyReader(): CompanyReaderInterface
+    protected function createPluginExecutor(): CompanyPluginExecutorInterface
     {
-        return new CompanyReader(
-            $this->getRepository()
+        return new CompanyPluginExecutor(
+            $this->getCompanyPreSavePlugins(),
+            $this->getCompanyPostSavePlugins(),
+            $this->getCompanyPostCreatePlugins()
         );
     }
 }

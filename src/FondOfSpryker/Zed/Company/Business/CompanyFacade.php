@@ -2,7 +2,8 @@
 
 namespace FondOfSpryker\Zed\Company\Business;
 
-use Generated\Shared\Transfer\CompanyResponseTransfer;
+use Generated\Shared\Transfer\CompanyCollectionTransfer;
+use Generated\Shared\Transfer\CompanyTransfer;
 use Spryker\Zed\Company\Business\CompanyFacade as BaseCompanyFacade;
 
 /**
@@ -17,14 +18,43 @@ class CompanyFacade extends BaseCompanyFacade implements CompanyFacadeInterface
      *
      * @api
      *
-     * @param string $externalReference
+     * @param int $idCompany
      *
-     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
+     * @return \Generated\Shared\Transfer\CompanyTransfer|null
      */
-    public function findCompanyByExternalReference(string $externalReference): CompanyResponseTransfer
+    public function findCompanyById(int $idCompany): ?CompanyTransfer
     {
-        return $this->getFactory()
-            ->createCompanyReader()
-            ->findCompanyByExternalReference($externalReference);
+        /** @var \FondOfSpryker\Zed\Company\Business\Reader\CompanyReaderInterface $companyReader */
+        $companyReader = $this->getFactory()->createCompanyReader();
+
+        return $companyReader->findCompanyById($idCompany);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyTransfer|null
+     */
+    public function getCompanyById(CompanyTransfer $companyTransfer): CompanyTransfer
+    {
+        /** @var \FondOfSpryker\Zed\Company\Business\Reader\CompanyReaderInterface $companyReader */
+        $companyReader = $this->getFactory()->createCompanyReader();
+
+        return $companyReader->getCompanyById($companyTransfer);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CompanyCollectionTransfer
+     */
+    public function getCompanies(): CompanyCollectionTransfer
+    {
+        /** @var \FondOfSpryker\Zed\Company\Business\Reader\CompanyReaderInterface $companyReader */
+        $companyReader = $this->getFactory()->createCompanyReader();
+
+        return $companyReader->getCompanies();
     }
 }

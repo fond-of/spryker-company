@@ -4,6 +4,7 @@ namespace FondOfSpryker\Zed\Company\Business;
 
 use FondOfSpryker\Zed\Company\Business\Model\CompanyPluginExecutor;
 use FondOfSpryker\Zed\Company\Business\Reader\CompanyReader;
+use FondOfSpryker\Zed\Company\CompanyDependencyProvider;
 use Spryker\Zed\Company\Business\CompanyBusinessFactory as SprykerCompanyBusinessFactory;
 use Spryker\Zed\Company\Business\Model\CompanyPluginExecutorInterface;
 use Spryker\Zed\Company\Business\Reader\CompanyReaderInterface;
@@ -37,7 +38,18 @@ class CompanyBusinessFactory extends SprykerCompanyBusinessFactory
         return new CompanyPluginExecutor(
             $this->getCompanyPreSavePlugins(),
             $this->getCompanyPostSavePlugins(),
-            $this->getCompanyPostCreatePlugins()
+            $this->getCompanyPostCreatePlugins(),
+            $this->getCompanyHydrationPlugins()
         );
+    }
+
+    /**
+     * @throws
+     *
+     * @return \FondOfSpryker\Zed\CompanyExtension\Dependency\Plugin\CompanyHydrationPluginInterface[]
+     */
+    protected function getCompanyHydrationPlugins(): array
+    {
+        return $this->getProvidedDependency(CompanyDependencyProvider::PLUGINS_COMPANY_HYDRATE);
     }
 }

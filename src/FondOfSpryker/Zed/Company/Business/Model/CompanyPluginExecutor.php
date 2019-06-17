@@ -24,7 +24,7 @@ class CompanyPluginExecutor extends SprykerCompanyPluginExecutor implements Comp
         array $companyPostCreatePlugins = [],
         array $companyHydrationPlugins = []
     ) {
-        parent::__construct($companyPreSavePlugins, $companyPostCreatePlugins, $companyPostSavePlugins);
+        parent::__construct($companyPreSavePlugins, $companyPostSavePlugins, $companyPostCreatePlugins);
 
         $this->companyHydrationPlugins = $companyHydrationPlugins;
     }

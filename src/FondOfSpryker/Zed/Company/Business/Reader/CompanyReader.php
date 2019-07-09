@@ -7,7 +7,7 @@ use Generated\Shared\Transfer\CompanyCollectionTransfer;
 use Generated\Shared\Transfer\CompanyResponseTransfer;
 use Generated\Shared\Transfer\CompanyTransfer;
 use Spryker\Zed\Company\Business\Reader\CompanyReader as SprykerCompanyReader;
-use Spryker\Zed\Company\Persistence\CompanyRepositoryInterface;
+use FondOfSpryker\Zed\Company\Persistence\CompanyRepositoryInterface;
 
 class CompanyReader extends SprykerCompanyReader implements CompanyReaderInterface
 {
@@ -17,7 +17,7 @@ class CompanyReader extends SprykerCompanyReader implements CompanyReaderInterfa
     protected $companyPluginExecutor;
 
     /**
-     * @param \Spryker\Zed\Company\Persistence\CompanyRepositoryInterface $companyRepository
+     * @param \FondOfSpryker\Zed\Company\Persistence\CompanyRepositoryInterface $companyRepository
      * @param \FondOfSpryker\Zed\Company\Business\Model\CompanyPluginExecutorInterface $companyPluginExecutor
      */
     public function __construct(

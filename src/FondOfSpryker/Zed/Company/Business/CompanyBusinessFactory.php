@@ -44,8 +44,6 @@ class CompanyBusinessFactory extends SprykerCompanyBusinessFactory
     }
 
     /**
-     * @throws
-     *
      * @return \FondOfSpryker\Zed\CompanyExtension\Dependency\Plugin\CompanyHydrationPluginInterface[]
      */
     protected function getCompanyHydrationPlugins(): array

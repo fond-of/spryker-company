@@ -14,7 +14,7 @@ use Spryker\Zed\Company\Business\CompanyFacade as BaseCompanyFacade;
 class CompanyFacade extends BaseCompanyFacade implements CompanyFacadeInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -31,13 +31,13 @@ class CompanyFacade extends BaseCompanyFacade implements CompanyFacadeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
      * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
      *
-     * @return \Generated\Shared\Transfer\CompanyTransfer|null
+     * @return \Generated\Shared\Transfer\CompanyTransfer
      */
     public function getCompanyById(CompanyTransfer $companyTransfer): CompanyTransfer
     {

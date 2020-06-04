@@ -13,7 +13,7 @@ use Spryker\Zed\Company\Persistence\CompanyRepository as SprykerCompanyRepositor
 class CompanyRepository extends SprykerCompanyRepository implements CompanyRepositoryInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -28,7 +28,6 @@ class CompanyRepository extends SprykerCompanyRepository implements CompanyRepos
             $companyTransfer = $this->getFactory()
                 ->createCompanyMapper()
                 ->mapEntityToCompanyTransfer($companyEntity, new CompanyTransfer());
-
 
             $companyTransfers->append($companyTransfer);
         }

@@ -3,11 +3,11 @@
 namespace FondOfSpryker\Zed\Company\Business\Reader;
 
 use FondOfSpryker\Zed\Company\Business\Model\CompanyPluginExecutorInterface;
+use FondOfSpryker\Zed\Company\Persistence\CompanyRepositoryInterface;
 use Generated\Shared\Transfer\CompanyCollectionTransfer;
 use Generated\Shared\Transfer\CompanyResponseTransfer;
 use Generated\Shared\Transfer\CompanyTransfer;
 use Spryker\Zed\Company\Business\Reader\CompanyReader as SprykerCompanyReader;
-use FondOfSpryker\Zed\Company\Persistence\CompanyRepositoryInterface;
 
 class CompanyReader extends SprykerCompanyReader implements CompanyReaderInterface
 {
